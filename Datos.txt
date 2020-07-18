@@ -1,0 +1,10 @@
+ecomputerapps@gmail.com
+^x*;GqX~G-X8jrH=
+
+
+Update set SAT.Realizado_Por = 14,  SAT.Realizado = 0 ,SAT.Revisar = 0 , SAT.EnviadoAPP = 0 SAT.FechaEnvioApp = GETDATE() Where N_Parte = xxxxx
+
+
+Curso .NET Core en C# - 22.Aprende como instalar Bootstrap- Visual Studio 2019
+
+https://www.youtube.com/watch?v=hqH8jk7t32Q
