@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace Taxi.Cross.IOS
+namespace Taxi.Cross.iOS
 {
     public class Application
     {

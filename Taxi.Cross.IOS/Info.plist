@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleDisplayName</key>
-    <string>Taxi.Cross.IOS</string>
+    <string>Taxi.Cross.iOS</string>
     <key>CFBundleIdentifier</key>
-    <string>com.companyname.Taxi.Cross.IOS</string>
+    <string>com.companyname.Taxi.Cross.iOS</string>
     <key>CFBundleShortVersionString</key>
     <string>1.0</string>
     <key>CFBundleVersion</key>
@@ -13,7 +13,7 @@
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>MinimumOSVersion</key>
-        <string>11.2</string>
+        <string>13.0</string>
     <key>UIDeviceFamily</key>
     <array>
         <integer>1</integer>

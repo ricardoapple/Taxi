@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Taxi.Web.Data;
 
 namespace Taxi.Web
@@ -16,7 +9,6 @@ namespace Taxi.Web
     {
         public static void Main(string[] args)
         {
-            //Aqui se inyecta a mano la Inyección de dependencia.
             IWebHost host = CreateWebHostBuilder(args).Build();
             RunSeeding(host);
             host.Run();
@@ -36,6 +28,5 @@ namespace Taxi.Web
         {
             return WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
         }
-            
     }
 }
