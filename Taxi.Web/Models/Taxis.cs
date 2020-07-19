@@ -16,5 +16,7 @@ namespace Taxi.Web.Models
         [StringLength(7, MinimumLength = 7, ErrorMessage = "El campo {0} debe tener al menos un caracter.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Plaque { get; set; }
+
+        public ICollection<Trip> Trips { get; set; }//Un Taxis tiene una colección de viajes
     }
 }

@@ -35,6 +35,7 @@ namespace Taxi.Web
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddTransient<SeedDb>();//Hace la inyección de dependencia de SeeDb
 
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("Conexion")));

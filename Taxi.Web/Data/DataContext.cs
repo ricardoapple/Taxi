@@ -7,6 +7,8 @@ namespace Taxi.Web.Data
     public class DataContext : DbContext
     {
         public DbSet<Taxis> Taxis { get; set; }
+        public DbSet<Trip> Trips { get; set; }
+        public DbSet<TripDetail> TripDetails { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -18,6 +20,8 @@ namespace Taxi.Web.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new TaxisMap());
+            modelBuilder.ApplyConfiguration(new TripMap());
+            modelBuilder.ApplyConfiguration(new TripDetailMap());
 
         }
     }

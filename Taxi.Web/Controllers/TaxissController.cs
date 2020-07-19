@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Taxi.Web.Data;
 using Taxi.Web.Models;
 
@@ -54,14 +55,30 @@ namespace Taxi.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Taxis taxis)
         {
-            //Validamos el modelo, significa que cumpla con todas las DataAnnotations que le hayamos puesto.
-            if (ModelState.IsValid)
-            {
-                taxis.Plaque = taxis.Plaque.ToUpper();//Antes de guardar convertimos la placa a mayúscula.
-                _context.Add(taxis);//Añade al modelo las propiedades, EF es tan inteligente que no es necesario _context.Taxis.Add(taxis), el lo asume que vamos a guardar en Taxis
-                await _context.SaveChangesAsync();//Guarda los cambios en la base de datos
-                return RedirectToAction(nameof(Index));//Me redirecciona a la vista
-            }
+                //Validamos el modelo, significa que cumpla con todas las DataAnnotations que le hayamos puesto.
+                if (ModelState.IsValid)
+                {
+                    taxis.Plaque = taxis.Plaque.ToUpper();//Antes de guardar convertimos la placa a mayúscula.
+                    _context.Add(taxis);//Añade al modelo las propiedades, EF es tan inteligente que no es necesario _context.Taxis.Add(taxis), el lo asume que vamos a guardar en Taxis   
+                }
+
+                try
+                {
+                    await _context.SaveChangesAsync();//Guarda los cambios en la base de datos
+                    return RedirectToAction(nameof(Index));//Me redirecciona a la vista
+                }
+                catch (Exception ex)
+                {
+                    if(ex.InnerException.Message.Contains("duplicada"))
+                    {
+                        ModelState.AddModelError(string.Empty,"La placa ya esta registrada");
+                    }
+                    else
+                    {
+                       ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    }    
+                }
+
             return View(taxis);
         }
 
@@ -95,8 +112,22 @@ namespace Taxi.Web.Controllers
             {
                 taxis.Plaque = taxis.Plaque.ToUpper();//Antes de guardar convertimos la placa a mayúscula.
                 _context.Update(taxis);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    await _context.SaveChangesAsync();//Guarda los cambios en la base de datos
+                    return RedirectToAction(nameof(Index));//Me redirecciona a la vista
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException.Message.Contains("duplicada"))
+                    {
+                        ModelState.AddModelError(string.Empty, "La placa ya esta registrada");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    }
+                }
             }
             return View(taxis);
         }

@@ -8,13 +8,12 @@ using Taxi.Web.Models;
 
 namespace Taxi.Web.Data.Mapping
 {
-    public class TaxisMap : IEntityTypeConfiguration<Taxis>
+    public class TripMap : IEntityTypeConfiguration<Trip>
     {
-        public void Configure(EntityTypeBuilder<Taxis> builder)
+        public void Configure(EntityTypeBuilder<Trip> builder)
         {
-            _ = builder.ToTable("Taxis");
+            _ = builder.ToTable("Trip");
             builder.HasKey(b => b.Id);
-            builder.HasIndex(b => b.Plaque).IsUnique();
 
         }
     }

@@ -1,1 +1,11 @@
 https://www.youtube.com/playlist?list=PLuEZQoW9bRnSr1sM-49M7f6-inBcpp6kv
+
+    public class Taxis
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [StringLength(7, MinimumLength = 7, ErrorMessage = "The {0} field must have {1} character.")]
+        [Required(ErrorMessage = "The field {0} is mandatory")]
+        public string Plaque { get; set; }
+    }
