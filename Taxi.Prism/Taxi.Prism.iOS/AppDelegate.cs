@@ -14,8 +14,8 @@ namespace Taxi.Prism.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             Xamarin.FormsMaps.Init();
-            new SfBusyIndicatorRenderer();
-            new SfRatingRenderer();
+            new SfBusyIndicatorRenderer();//Este es el icono de la herramienta dando vuelta mientras busca
+            new SfRatingRenderer();//Son las estrellas para valorar un servicio.
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

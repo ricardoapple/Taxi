@@ -12,6 +12,8 @@ namespace Taxi.Web.Data
 {
     public class SeedDb
     {
+        //Esta es una clase que crea la base de datos si no existe con sus respectivas tablas y crea valores de prueba
+        //Este SeedDb es capaz de inyectar usuarios.
         private readonly DataContext _dataContext;
         private readonly IUserHelper _userHelper;
         private readonly IBlobHelper _blobHelper;
@@ -116,7 +118,7 @@ namespace Taxi.Web.Data
             string image)
         {
             UserEntity user = await _userHelper.GetUserAsync(email);
-            if (user == null)
+            if (user == null)//Si el usuario no existe crea el usuario
             {
                 string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\Users", image);
                 string imageId = await _blobHelper.UploadBlobAsync(path, "users");
@@ -153,7 +155,7 @@ namespace Taxi.Web.Data
 
         private async Task CheckTaxisAsync()
         {
-            if (!_dataContext.Taxis.Any())
+            if (!_dataContext.Taxis.Any())//Verifica que hayan datos Taxis
             {
                 UserEntity driver = await _dataContext.Users.FirstOrDefaultAsync(u => u.UserType == UserType.Admin);
                 int i = 0;
@@ -177,9 +179,9 @@ namespace Taxi.Web.Data
                 User = driver,
                 Trips = new List<TripEntity>
                 {
-                    new TripEntity
+                    new TripEntity //Añadimos Viajes
                     {
-                        StartDate = DateTime.UtcNow,
+                        StartDate = DateTime.UtcNow,//Guarda hora de Londres
                         EndDate = DateTime.UtcNow.AddMinutes(30),
                         Qualification = _random.Next(0, 5),
                         Source = "ITM Fraternidad",

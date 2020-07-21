@@ -76,7 +76,6 @@ namespace Taxi.Web
                 cfg.UseSqlServer(Configuration.GetConnectionString("Conexion"));
             });
 
-
             services.AddTransient<SeedDb>();//Hace la inyección de dependencia de SeeDb
             services.AddScoped<IUserHelper, UserHelper>();//Creamos la inyeccion de dependencia de UserHelper.Cada vez que llamen a IUserHelper el va a mandar una implementación de UserHelper.
             services.AddScoped<IConverterHelper, ConverterHelper>();

@@ -7,6 +7,8 @@ namespace Taxi.Prism.ViewModels
 {
     public class MenuItemViewModel : Menu
     {
+        //Los ViewModel son clases que tienen la logica de navegación cuando estan metidas eb una lista
+        //Es el origen de la lista 
         private readonly INavigationService _navigationService;
         private DelegateCommand _selectMenuCommand;
 

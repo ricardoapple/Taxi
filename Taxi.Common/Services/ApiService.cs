@@ -383,6 +383,7 @@ namespace Taxi.Common.Services
 
         public bool CheckConnection()
         {
+            //Chequea si hay conexión a internet
             return Connectivity.NetworkAccess == NetworkAccess.Internet;
         }
 

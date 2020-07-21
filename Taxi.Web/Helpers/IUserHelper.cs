@@ -6,6 +6,7 @@ using Taxi.Web.Models;
 
 namespace Taxi.Web.Helpers
 {
+    //Se crea como interfaz por que lo vamos a configurar como una inyección
     public interface IUserHelper
     {
         Task<string> GeneratePasswordResetTokenAsync(UserEntity user);

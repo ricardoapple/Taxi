@@ -16,7 +16,7 @@ namespace Taxi.Web.Controllers.API
 
         public TaxisController(
             DataContext context,
-            IConverterHelper converterHelper)
+            IConverterHelper converterHelper)//Se crea una inyección
         {
             _context = context;
             _converterHelper = converterHelper;
@@ -32,13 +32,13 @@ namespace Taxi.Web.Controllers.API
 
             TaxiEntity taxiEntity = await _context.Taxis
                 .Include(t => t.User) // Driver
-                .Include(t => t.Trips)
+                .Include(t => t.Trips)//Tiene relación con User
                 .ThenInclude(t => t.TripDetails)
-                .Include(t => t.Trips)
+                .Include(t => t.Trips)//Este otro Trips tiene relación con TripDetails
                 .ThenInclude(t => t.User) // Passanger
                 .FirstOrDefaultAsync(t => t.Plaque == plaque);
 
-            if (taxiEntity == null)
+            if (taxiEntity == null)//Si no encontramos el taxi lo creamos
             {
                 taxiEntity = new TaxiEntity { Plaque = plaque.ToUpper() };
                 _context.Taxis.Add(taxiEntity);

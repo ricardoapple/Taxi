@@ -11,12 +11,13 @@ namespace Taxi.Prism.Views
     {
         private readonly IGeolocatorService _geolocatorService;
 
-        public HomePage(IGeolocatorService geolocatorService)
+        public HomePage(IGeolocatorService geolocatorService)//Inyectamos el servicio
         {
             InitializeComponent();
             _geolocatorService = geolocatorService;
         }
 
+        //El OnAppearing se ejecuta cuando ya la página esta lista para mostrarla al usuario, 
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -29,7 +30,7 @@ namespace Taxi.Prism.Views
 
             if (isLocationPermision)
             {
-                MyMap.IsShowingUser = true;
+                MyMap.IsShowingUser = true;//Pintamos un puntito donde estamos ubicados
 
                 await _geolocatorService.GetLocationAsync();
                 if (_geolocatorService.Latitude != 0 && _geolocatorService.Longitude != 0)
@@ -49,6 +50,7 @@ namespace Taxi.Prism.Views
                 Distance.FromKilometers(.2)));
         }
 
+        //Chequea los permisos, y si el usuario da permiso podemos mover el mapa.
         private async Task<bool> CheckLocationPermisionsAsync()
         {
             PermissionStatus permissionLocation = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);

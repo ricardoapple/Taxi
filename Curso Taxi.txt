@@ -1,11 +1,15 @@
 https://www.youtube.com/playlist?list=PLuEZQoW9bRnSr1sM-49M7f6-inBcpp6kv
 
-    public class Taxis
-    {
-        [Key]
-        public int Id { get; set; }
+https://getbootstrap.com/docs/3.3/components/     ===== Esta es una pagina para iconos de cualquier tipo.
+Android Aset Studio ==== Iconos predeterminados hechos por google
+Xamarin forms syncfusion === Galeria de recursos.
+syncfusion community license === Hay que loguerase con licence de Linkedin, es una licnecia gratuita hasta tres programadores
+agregar el nuget === Syncfusion.Xamarin.SfBusyIndicator == Para herramienta mientras busca
+agregar el nuget === Syncfusion.Xamarin.SfBusyIndicator == Para valorar un servicio de las estrellas.
+Colo.adobe.com === Nos ayuda a colorear cuando no tenemos un diseñador 
 
-        [StringLength(7, MinimumLength = 7, ErrorMessage = "The {0} field must have {1} character.")]
-        [Required(ErrorMessage = "The field {0} is mandatory")]
-        public string Plaque { get; set; }
-    }
+James Montemagno == creador de xamarin forms
+
+Nombre base de datos en azure: Tax.Web_db
+Nombre de usuario: rruiz
+contraseña: pelUsa942020

@@ -29,8 +29,8 @@ namespace Taxi.Prism.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
-            new SfBusyIndicatorRenderer();
-            new SfRatingRenderer();
+            new SfBusyIndicatorRenderer();//Este es el icono de la herramienta dando vuelta mientras busca
+            new SfRatingRenderer();// Son las estrellas para valorar un servicio.
             Xamarin.FormsMaps.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }

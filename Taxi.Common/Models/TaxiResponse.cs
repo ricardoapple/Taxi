@@ -13,8 +13,10 @@ namespace Taxi.Common.Models
 
         public UserResponse User { get; set; }
 
+        //Promedio de todas las calificaciones individales
         public float Qualification => Trips == null ? 0 : Trips.Average(t => t.Qualification);
 
+        //Total de numeros de viajes. 
         public int NumberOfTrips => Trips == null ? 0 : Trips.Count;
     }
 }

@@ -84,7 +84,9 @@ namespace Taxi.Web.Helpers
             {
                 Id = taxiEntity.Id,
                 Plaque = taxiEntity.Plaque,
-                Trips = taxiEntity.Trips?.Select(t => new TripResponse
+                //Que por cada tripEntities devuelveme TripResponse
+                //Select equivale a un Mapping, El ? que valide los nulos.
+                Trips = taxiEntity.Trips?.Select(t => new TripResponse 
                 {
                     EndDate = t.EndDate,
                     Id = t.Id,
@@ -104,9 +106,9 @@ namespace Taxi.Web.Helpers
                         Latitude = td.Latitude,
                         Longitude = td.Longitude
                     }).ToList(),
-                    User = ToUserResponse(t.User)
+                    User = ToUserResponse(t.User)//Este user es el que hace el viaje
                 }).ToList(),
-                User = ToUserResponse(taxiEntity.User)
+                User = ToUserResponse(taxiEntity.User)//Este user es el conductor del taxi cuando se registra
             };
         }
 

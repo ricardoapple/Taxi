@@ -21,7 +21,7 @@ namespace Taxi.Prism.ViewModels
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { "trip", this }
+                { "trip", this } //A la pagina le pasamos el detalle que selecciono
             };
 
             await _navigationService.NavigateAsync(nameof(TripDetailPage), parameters);

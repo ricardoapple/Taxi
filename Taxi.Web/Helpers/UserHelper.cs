@@ -109,7 +109,7 @@ namespace Taxi.Web.Helpers
         public async Task CheckRoleAsync(string roleName)
         {
             bool roleExists = await _roleManager.RoleExistsAsync(roleName);
-            if (!roleExists)//Si el rol no existe lo creamos
+            if (!roleExists)// Si el rol no existe lo creamos
             {
                 await _roleManager.CreateAsync(new IdentityRole
                 {
@@ -120,7 +120,7 @@ namespace Taxi.Web.Helpers
 
         public async Task<UserEntity> GetUserAsync(string email)
         {
-            return await _userManager.FindByEmailAsync(email);
+            return await _userManager.FindByEmailAsync(email);// Si no existe devuelve nulo
         }
 
         public async Task<bool> IsUserInRoleAsync(UserEntity user, string roleName)
@@ -134,12 +134,12 @@ namespace Taxi.Web.Helpers
                 model.Username,
                 model.Password,
                 model.RememberMe,
-                false);
+                false);//Si lo ponemos a true, se bloquea despues de tres intentos fallidos al loguearse
         }
 
         public async Task LogoutAsync()
         {
-            await _signInManager.SignOutAsync();
+            await _signInManager.SignOutAsync();//Salir de la aplicación.
         }
     }
 }

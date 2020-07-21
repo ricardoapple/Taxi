@@ -14,8 +14,8 @@ namespace Taxi.Common.Services
         {
             try
             {
-                var locator = CrossGeolocator.Current;
-                locator.DesiredAccuracy = 50;
+                var locator = CrossGeolocator.Current;//Obtenemos la localización del teléfono
+                locator.DesiredAccuracy = 50;//Es una precisión de 50 metros.
                 var location = await locator.GetPositionAsync();
                 Latitude = location.Latitude;
                 Longitude = location.Longitude;

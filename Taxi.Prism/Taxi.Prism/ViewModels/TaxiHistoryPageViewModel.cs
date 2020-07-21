@@ -19,6 +19,7 @@ namespace Taxi.Prism.ViewModels
         private DelegateCommand _checkPlaqueCommand;
 
         public TaxiHistoryPageViewModel(
+            //Va a consumir servicio
             INavigationService navigationService,
             IApiService apiService) : base(navigationService)
         {
